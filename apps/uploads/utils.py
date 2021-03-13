@@ -37,7 +37,7 @@ def get_uuid():
     """Return the hex from a new uuid4 uuid"""
     return uuid.uuid4().hex
 
-class ManagedUrl(object):
+class ManagedUrl():
     """
     Manages a URL so that it can be fed back to a user's session safely.
     It takes a url that has a password and caches the details to disk before
@@ -84,7 +84,7 @@ class ManagedUrl(object):
 
 
 
-class Download(object): 
+class Download(): 
     """Wrap the requests module for django's storage backend."""
     _requests = None
 

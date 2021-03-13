@@ -38,7 +38,7 @@ def IterObject(typ=list): # pylint: disable=invalid-name
         return __inner__
     return __outer__
 
-class AutoBreadcrumbMiddleware(object):
+class AutoBreadcrumbMiddleware():
     """
     This middleware controls and inserts some breadcrumbs
     into most pages. It attempts to navigate object hierachy

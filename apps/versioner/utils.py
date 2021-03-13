@@ -34,7 +34,7 @@ def context_items(context):
         for (key, value) in d.items():
             yield (key, value)
 
-class BaseMiddleware(object):
+class BaseMiddleware():
     """ 
     When used by a middleware class, provides a predictable get()
     function which will provide the first available variable from

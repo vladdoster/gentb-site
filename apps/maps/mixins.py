@@ -85,7 +85,7 @@ class JsonView(View):
         raise NotImplementedError("Please provide context data.")
 
 
-class DataSlicerMixin(object):
+class DataSlicerMixin():
     """
     Provide a way to slice up a given model based on inputs.
     """
@@ -163,7 +163,7 @@ def as_set(val):
         return set()
     return set(val) if isinstance(val, (tuple, list)) else set([val])
 
-class DataTableMixin(object):
+class DataTableMixin():
     """
     Return context rendered as a Json output for the DataTables plugin.
     """

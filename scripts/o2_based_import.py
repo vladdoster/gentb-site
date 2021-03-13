@@ -46,7 +46,7 @@ class NotEnrichedError(ValueError):
     """The VCF File isn't enriched, so can't be imported"""
 
 
-class Command(object):
+class Command():
     """Import VCF and JSON based strain data"""
     # Caches
     countries = EMPTY.copy()
