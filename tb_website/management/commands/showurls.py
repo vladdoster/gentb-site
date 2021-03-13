@@ -33,7 +33,7 @@ class Url():
         namespace = self.namespace
         if name and namespace:
             return "%s:%s" % (namespace, name)
-        elif name:
+        if name:
             return name
         return None
 
@@ -97,7 +97,7 @@ class UrlModule(Url):
     def urls_name(self, uc):
         if isinstance(uc, list) and uc:
             return self.urls_name(uc[0])
-        elif hasattr(uc, '__name__'):
+        if hasattr(uc, '__name__'):
             return uc.__name__
         return None
 

@@ -458,10 +458,9 @@ class PredictStrain(Model):
             # Very old format lineages
             if data and data[0] == '\t':
                 return list(lineage_spoligo(data.split('\t')))
-            elif '\t' in data:
+            if '\t' in data:
                 return list(lineage_fast_caller(data))
-            else:
-                return list(lineage_other_caller(data))
+            return list(lineage_other_caller(data))
         return []
 
     @property

@@ -241,11 +241,11 @@ def unpack_mutation_format(name):
         if snp.get('noncode', '') != 'promoter':
             _ = ValueError("Promoter doesn't specify 'promoter' part in %s" % name)
         return (index, 'promoter ' + gene, name)
-    elif snp['syn'] == 'I':
+    if snp['syn'] == 'I':
         if snp.get('noncode', '') != 'inter':
             _ = ValueError("Integenic doesn't specify 'inter' part")
         return (index, 'intergenic ' + gene, name)
-    elif snp['syn'] in ['CN', 'CD', 'CF', 'CI', 'CS', 'CZ', 'N', 'ND', 'NI', 'NF']:
+    if snp['syn'] in ['CN', 'CD', 'CF', 'CI', 'CS', 'CZ', 'N', 'ND', 'NI', 'NF']:
         return (index, gene, name)
     raise ValueError("Must be promoter, intergenic or CN, CD, CF, CI, CS, CZ or N, ND, NI, NF")
 
