@@ -18,8 +18,6 @@
 Provide prediction app using the pipeline for building predictions and the
 uploads app to download large data files from the users.
 """
-
-import sys
 import json
 import logging
 
@@ -28,7 +26,7 @@ from hashlib import md5
 import os
 from os.path import join, isdir, basename
 
-from collections import defaultdict, OrderedDict
+from collections import defaultdict
 from datetime import timedelta
 
 from model_utils.models import TimeStampedModel
@@ -53,20 +51,7 @@ from .utils import lineage_spoligo, lineage_fast_caller, lineage_other_caller, f
 LOGGER = logging.getLogger('apps.predict')
 
 # Basic status matrix, file_status + processing_status
-STATUS = dict([
-    ('FILE_NONE', (_('No Files Uploaded'), 'danger', 9)),
-    ('FILE_WAIT', (_('Dataset Confirmed'), 'default', 10)),
-    ('FILE_START', (_('File Retrieval Started'), 'primary', 8)),
-    ('FILE_ERROR', (_('File Retrieval Failed'), 'danger', 10)),
-    ('RUN_NONE', (_('No Strains to process'), 'danger', 10)),
-    ('RUN_WAIT', (_('File Retrieval Success'), 'default', 8)),
-    ('RUN_START', (_('Processing Started'), 'primary', 6)),
-    ('RUN_ERROR', (_('Processing Failed'), 'danger', 4)),
-    ('RUN_DONE', (_('Processing Success'), 'default', 10)),
-    ('READY', (_('Prediction Ready'), 'success', 0)),
-    ('INVALID', (_('Lacks Quality'),'warning', 8)),
-    ('TIMEOUT', (_('Processing Timed Out'), 'danger', 3)),
-])
+STATUS = {'FILE_NONE': (_('No Files Uploaded'), 'danger', 9), 'FILE_WAIT': (_('Dataset Confirmed'), 'default', 10), 'FILE_START': (_('File Retrieval Started'), 'primary', 8), 'FILE_ERROR': (_('File Retrieval Failed'), 'danger', 10), 'RUN_NONE': (_('No Strains to process'), 'danger', 10), 'RUN_WAIT': (_('File Retrieval Success'), 'default', 8), 'RUN_START': (_('Processing Started'), 'primary', 6), 'RUN_ERROR': (_('Processing Failed'), 'danger', 4), 'RUN_DONE': (_('Processing Success'), 'default', 10), 'READY': (_('Prediction Ready'), 'success', 0), 'INVALID': (_('Lacks Quality'),'warning', 8), 'TIMEOUT': (_('Processing Timed Out'), 'danger', 3)}
 
 def get_timeout(timeout=14):
     """Returns the timedate when the prediction should time out"""
@@ -164,17 +149,17 @@ class PredictDataset(TimeStampedModel):
     @property
     def has_prediction(self):
         """Returns true if any strain has a predict file"""
-        return any([strain.has_prediction for strain in self.strains.all()])
+        return any(strain.has_prediction for strain in self.strains.all())
 
     @property
     def has_lineages(self):
         """Return true if any strain has a lineage file"""
-        return any([strain.has_lineage for strain in self.strains.all()])
+        return any(strain.has_lineage for strain in self.strains.all())
 
     @property
     def has_output_files(self):
         """Return true if any strain has output files"""
-        return any([list(strain.output_files) for strain in self.strains.all()])
+        return any(list(strain.output_files) for strain in self.strains.all())
 
     @property
     def time_taken(self):
@@ -473,10 +458,9 @@ class PredictStrain(Model):
             # Very old format lineages
             if data and data[0] == '\t':
                 return list(lineage_spoligo(data.split('\t')))
-            elif '\t' in data:
+            if '\t' in data:
                 return list(lineage_fast_caller(data))
-            else:
-                return list(lineage_other_caller(data))
+            return list(lineage_other_caller(data))
         return []
 
     @property
@@ -504,7 +488,8 @@ class PredictStrain(Model):
             except Exception:
                 yield None, False
 
-    def _prediction_from_file(self, matrix_fn):
+    @staticmethod
+    def _prediction_from_file(matrix_fn):
         m_A, m_B, m_C, m_D = {}, {}, {}, {}
         with open(matrix_fn, 'r') as fhl:
             parts = json.loads(fhl.read())

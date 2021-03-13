@@ -1136,11 +1136,7 @@ L.Bounds.prototype = {
 	contains: function (obj) {
 		var min, max;
 
-		if (typeof obj[0] === 'number' || obj instanceof L.Point) {
-			obj = L.point(obj);
-		} else {
-			obj = L.bounds(obj);
-		}
+		obj = typeof obj[0] === 'number' || obj instanceof L.Point ? L.point(obj) : L.bounds(obj);
 
 		if (obj instanceof L.Bounds) {
 			min = obj.min;
@@ -1871,11 +1867,7 @@ L.LatLngBounds.prototype = {
 	// @method contains (latlng: LatLng): Boolean
 	// Returns `true` if the rectangle contains the given point.
 	contains: function (obj) { // (LatLngBounds) or (LatLng) -> Boolean
-		if (typeof obj[0] === 'number' || obj instanceof L.LatLng || 'lat' in obj) {
-			obj = L.latLng(obj);
-		} else {
-			obj = L.latLngBounds(obj);
-		}
+		obj = typeof obj[0] === 'number' || obj instanceof L.LatLng || 'lat' in obj ? L.latLng(obj) : L.latLngBounds(obj);
 
 		var sw = this._southWest,
 		    ne = this._northEast,

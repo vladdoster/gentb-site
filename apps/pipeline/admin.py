@@ -21,9 +21,9 @@ from django.utils.safestring import mark_safe
 try:
     from adminsortable2.admin import SortableAdminMixin, SortableInlineAdminMixin
 except ImportError:
-    class SortableAdminMixin(object):
+    class SortableAdminMixin():
         pass
-    class SortableInlineAdminMixin(object):
+    class SortableInlineAdminMixin():
         pass
 
 from .models import *
@@ -37,7 +37,8 @@ class PipelineAdmin(admin.ModelAdmin):
     list_display = ('name', 'enabled', 'description', 'errors')
     inlines = (PipelineProgramInline,)
 
-    def enabled(self, obj):
+    @staticmethod
+    def enabled(obj):
         return not obj.disabled
     enabled.boolean = True
 
@@ -87,7 +88,8 @@ class PipelineRunAdmin(admin.ModelAdmin):
     list_filter = ['pipeline']
     inlines = (ProgramRunInline,)
 
-    def status(self, obj):
+    @staticmethod
+    def status(obj):
         for prog in obj.programs.all():
             if prog.is_complete:
                 continue
@@ -99,16 +101,19 @@ class PipelineRunAdmin(admin.ModelAdmin):
                 return 'Waiting: %s' % str(prog.program)
         return "Complete"
 
-    def age(self, obj):
+    @staticmethod
+    def age(obj):
         if obj.modified and obj.created:
             return obj.modified - obj.created
         return '-'
 
+    @staticmethod
     def all_stop(modeladmin, request, queryset):
         for run in queryset.all():
             run.stop_all(msg='Admin Stopped this Program')
     all_stop.short_description = "Emergency All Stop"
 
+    @staticmethod
     def force_update(modeladmin, request, queryset):
         for run in queryset.all():
             for program in run.programs.all():

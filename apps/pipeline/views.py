@@ -46,7 +46,8 @@ class PipelineDetail(ProtectedMixin, DetailView): # pylint: disable=too-many-anc
             for_test=True, commit=False, file='file')
         return data
 
-    def get_parent(self):
+    @staticmethod
+    def get_parent():
         return (reverse('pipeline:pipelines'), "Pipelines")
 
 class DiskUsage(ProtectedMixin, ListView):
