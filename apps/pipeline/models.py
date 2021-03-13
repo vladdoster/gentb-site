@@ -451,7 +451,7 @@ class PipelineRun(TimeStampedModel):
     def all_programs(self):
         """Returns all the program runs with unrun pipelines appended"""
         ret = []
-        runs = dict((p.program_id, p) for p in self.programs.all())
+        runs = {p.program_id: p for p in self.programs.all()}
         for pipe in self.pipeline.programs.all():
             ret.append(runs.get(pipe.program_id, pipe))
         return ret
