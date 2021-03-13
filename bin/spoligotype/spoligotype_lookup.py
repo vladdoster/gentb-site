@@ -56,7 +56,7 @@ if __name__=="__main__":
     id,spol = data[i][0],data[i][1]
     octspol = octal(spol)
     fam = ' '.join(data[i][2:])
-    if subsumes(octspol,binquery)==True:
+    if subsumes(octspol,binquery) is True:
       sim = similarity(octspol,binquery)
       scores.append((sim,i,id,spol,octspol,fam))
   
