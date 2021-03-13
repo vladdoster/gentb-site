@@ -164,17 +164,17 @@ class PredictDataset(TimeStampedModel):
     @property
     def has_prediction(self):
         """Returns true if any strain has a predict file"""
-        return any([strain.has_prediction for strain in self.strains.all()])
+        return any(strain.has_prediction for strain in self.strains.all())
 
     @property
     def has_lineages(self):
         """Return true if any strain has a lineage file"""
-        return any([strain.has_lineage for strain in self.strains.all()])
+        return any(strain.has_lineage for strain in self.strains.all())
 
     @property
     def has_output_files(self):
         """Return true if any strain has output files"""
-        return any([list(strain.output_files) for strain in self.strains.all()])
+        return any(list(strain.output_files) for strain in self.strains.all())
 
     @property
     def time_taken(self):
