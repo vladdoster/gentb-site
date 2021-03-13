@@ -60,7 +60,8 @@ class AutoBreadcrumbMiddleware():
         response = self.get_response(request)
         return response
 
-    def get(self, data, key, default=None, then=None):
+    @staticmethod
+    def get(data, key, default=None, then=None):
         """Returns a data key from the context_data, the view, a get
         method on the view or a get method on the middleware in that order.
         
@@ -87,7 +88,8 @@ class AutoBreadcrumbMiddleware():
         response.context_data['admin_link'] = self.get_admin_link(request.user, data)
         return response
 
-    def get_admin_link(self, user, data):
+    @staticmethod
+    def get_admin_link(user, data):
         """Generates an admin link to edit this object"""
         obj = data.get('object', None)
         if obj is not None and user is not None:
@@ -99,7 +101,8 @@ class AutoBreadcrumbMiddleware():
                     'url': reverse(f'admin:{ct.app_label}_{ct.model}_change', args=args),
                 }
 
-    def get_title(self, data):
+    @staticmethod
+    def get_title(data):
         """If no title specified in context, use last breadcrumb"""
         if data.get('breadcrumbs', False):
             return list(data['breadcrumbs'])[-1][-1]
@@ -152,7 +155,8 @@ class AutoBreadcrumbMiddleware():
                 yield ans
         yield obj
 
-    def object_link(self, obj):
+    @staticmethod
+    def object_link(obj):
         """Get name from object model"""
         url = None
         if obj is None or (isinstance(obj, tuple) and len(obj) == 2):

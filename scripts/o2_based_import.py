@@ -140,7 +140,8 @@ class Command():
             for reason, count in self.log['ok'].items():
                 print(f" * {reason}: {count}")
 
-    def annotate_vcf(self, var_fhl, vcf_path):
+    @staticmethod
+    def annotate_vcf(var_fhl, vcf_path):
         """
         Call the flat annotator and block until we're finished.
         """

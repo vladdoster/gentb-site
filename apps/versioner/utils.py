@@ -46,7 +46,8 @@ class BaseMiddleware():
     def __call__(self, request):
         return self.get_response(request)
 
-    def get(self, data, key, default=None, then=None):
+    @staticmethod
+    def get(data, key, default=None, then=None):
         """Returns a data key from the context_data, the view, a get
         method on the view or a get method on the middleware in that order.
         

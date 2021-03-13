@@ -258,7 +258,8 @@ class GeneDrugInteraction(Model):
 
 
 class MutationQuerySet(QuerySet):
-    def variant_names(self):
+    @staticmethod
+    def variant_names():
         """Returns a list of mutations involved in predictions"""
         # Disabled while the database and RandomForest are incongruent
         #names = self.values_list('name', flat=True)

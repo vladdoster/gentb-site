@@ -769,7 +769,8 @@ class ProgramRun(TimeStampedModel):
             return -1
         return max([keep_for - self.output_age(), 0])
 
-    def update_size(self, *files):
+    @staticmethod
+    def update_size(*files):
         """Takes a list of files as a string and returns the size in Kb"""
         return 0 + sum([os.path.getsize(fn) for fn in files])
 

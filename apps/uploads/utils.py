@@ -50,7 +50,8 @@ class ManagedUrl():
             with open(self._cache_file(self.url.netloc.encode('utf8'))) as fhl:
                 self.url = self.url._replace(**json.loads(fhl.read()))
 
-    def _cache_file(self, digest):
+    @staticmethod
+    def _cache_file(digest):
         """Return the location of the cached url"""
         return os.path.join(settings.UPLOAD_CACHE_ROOT, digest + '.json')
 
