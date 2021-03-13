@@ -180,7 +180,7 @@ class Lookup(BaseLookup):
 
         if delimiter is None:
             ext = filename.rsplit('.', 1)[-1]
-            delimiter = self.auto_delim.get(ext, None)
+            delimiter = self.auto_delim.get(ext)
 
         if delimiter is not None:
             self.delimiter = delimiter
