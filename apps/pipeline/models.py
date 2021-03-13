@@ -458,7 +458,7 @@ class PipelineRun(TimeStampedModel):
 
     def stop_all(self, msg='All Stopped'):
         """Forcefully stop all processes in this pipeline run"""
-        return all([program.stop(msg=msg) for program in self.programs.all()])
+        return all(program.stop(msg=msg) for program in self.programs.all())
 
     def update_all(self):
         """
@@ -466,7 +466,7 @@ class PipelineRun(TimeStampedModel):
         True if all programs are complete. False if any are still running.
         """
         qset = self.programs.filter(Q(is_submitted=False) | Q(is_complete=False))
-        if all([program.update_status() for program in qset]):
+        if all(program.update_status() for program in qset):
             if qset.count():
                 # Clean up step for all programs
                 self.delete_output_files()
