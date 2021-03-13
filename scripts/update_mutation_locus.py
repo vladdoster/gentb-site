@@ -7,7 +7,7 @@ sys.path.insert(0, '.')
 sys.path.insert(0, '..')
 
 try:
-    import manage # pylint: disable=unused-import
+    import manage  # pylint: disable=unused-import
 except ImportError as err:
     sys.stderr.write("Could not run script! Is manage.py not in the current"\
         "working directory, or is the environment not configured?:\n"\
@@ -15,9 +15,10 @@ except ImportError as err:
     sys.exit(1)
 
 from django.db.models import Q
-from apps.utils.models import merge_model_objects
+
 from apps.mutations.models import GeneLocus, Mutation
-from apps.mutations.utils import match_snp_name, match_snp_half
+from apps.mutations.utils import match_snp_half, match_snp_name
+from apps.utils.models import merge_model_objects
 
 GENES = GeneLocus.objects.filter(start__isnull=False, stop__isnull=False)
 

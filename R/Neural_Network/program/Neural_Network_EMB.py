@@ -8,8 +8,10 @@
 # Uncomment to Run on GPU
 #from sknn.platform import gpu32
 import os
-import numpy as np
 import pickle
+
+import numpy as np
+
 #import collections
 #from sklearn.feature_selection import RFE
 

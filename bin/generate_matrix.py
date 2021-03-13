@@ -3,11 +3,11 @@
 generates a matrix.csv file from one .var file
 """
 
-import re
 import os
+import re
 import sys
-
 from argparse import ArgumentParser, ArgumentTypeError
+
 
 def file_type(fname):
     """Confirm file input is in a file"""

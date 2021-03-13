@@ -20,14 +20,14 @@ Test the dropbox upload functionality.
 We can't really test the javascript from here, so we'll focus
 on making sure the backend get-files portion works.
 """
-import os
 import json
+import os
 
 from django.contrib.auth import get_user_model
-
 from extratest.base import ExtraTestCase
 
 from ..models import DropboxUploadFile
+
 
 class TestDropbox(ExtraTestCase):
     def setUp(self):

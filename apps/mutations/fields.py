@@ -21,6 +21,7 @@ Input fields for manual mutation entry.
 from django.forms.fields import CharField
 from django.forms.widgets import Textarea
 
+
 class ListerWidget(Textarea):
     class Media:
         js = ('js/lister.js',)

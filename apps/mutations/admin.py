@@ -20,12 +20,14 @@
 A basic set of administrative functions for genes and mutations
 """
 
-from django.contrib.admin import register, site, ModelAdmin, StackedInline, TabularInline
-from .models import (
-    Drug, DrugClass, DrugRegimen, ImportSource, Mutation, Genome, GeneLocus,
-    GeneDrugInteraction, TargetSet, TargetRegion, StrainResistance, Paper,
-    BioProject, StrainSource, StrainMutation, Lineage
-)
+from django.contrib.admin import (ModelAdmin, StackedInline, TabularInline,
+                                  register, site)
+
+from .models import (BioProject, Drug, DrugClass, DrugRegimen,
+                     GeneDrugInteraction, GeneLocus, Genome, ImportSource,
+                     Lineage, Mutation, Paper, StrainMutation,
+                     StrainResistance, StrainSource, TargetRegion, TargetSet)
+
 
 @register(Lineage)
 class LineageAdmin(ModelAdmin):

@@ -15,11 +15,12 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-from django.conf.urls import url, include
-from django.contrib.auth.views import (
-  PasswordResetView, PasswordResetConfirmView,
-  PasswordResetCompleteView, PasswordResetDoneView,
-)
+from django.conf.urls import include, url
+from django.contrib.auth.views import (PasswordResetCompleteView,
+                                       PasswordResetConfirmView,
+                                       PasswordResetDoneView,
+                                       PasswordResetView)
+
 
 def url_tree(regex, *urls):
     class UrlTwig():

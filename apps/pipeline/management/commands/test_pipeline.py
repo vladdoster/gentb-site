@@ -2,11 +2,12 @@
 Initialize a pipeline run from a pipeline and run it
 """
 
+import datetime
 import sys
 import time
-import datetime
 
 from django.core.management.base import BaseCommand
+
 from apps.pipeline.models import Pipeline
 
 

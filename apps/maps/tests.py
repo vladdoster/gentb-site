@@ -24,8 +24,9 @@ from collections import Counter
 from django.test import TestCase
 from extratest.base import ExtraTestCase
 
-from ..mutations.models import ImportSource, GeneLocus
-from .utils import OrderlyDict, OrderedDict, GraphData
+from ..mutations.models import GeneLocus, ImportSource
+from .utils import GraphData, OrderedDict, OrderlyDict
+
 
 class UtilsTest(TestCase):
     """Test map utility functions"""

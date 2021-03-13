@@ -19,10 +19,10 @@
 Login and user views which use the 'users:' prefix.
 """
 
-from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView
+from django.urls import path
 
-from .views import UserSignUp, SignUpSuccess
+from .views import SignUpSuccess, UserSignUp
 
 app_name = 'users'
 urlpatterns = [

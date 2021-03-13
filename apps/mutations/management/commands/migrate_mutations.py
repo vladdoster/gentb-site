@@ -1,7 +1,8 @@
 
 import json
-from operator import or_
+import logging
 from collections import defaultdict
+from operator import or_
 
 from django.core.management.base import BaseCommand, CommandError
 
@@ -9,7 +10,6 @@ from apps.maps.models import *
 from apps.mutations.models import *
 from apps.mutations.utils import *
 
-import logging
 LOGGER = logging.getLogger('apps.mutations')
 EMPTY = {None: None, 'None': None, '': None,}
 

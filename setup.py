@@ -22,7 +22,8 @@ import os
 import sys
 
 from setuptools import setup
-from tb_website.settings import MOD_VERSION, MOD_PACKAGE
+
+from tb_website.settings import MOD_PACKAGE, MOD_VERSION
 
 # remove MANIFEST. distutils doesn't properly update it when the
 # contents of directories change.

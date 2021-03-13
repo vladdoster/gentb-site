@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 """Process all available"""
 
+import atexit
+import fnmatch
 import os
 import sys
-import fnmatch
-import atexit
-
 from datetime import datetime
-from subprocess import Popen, PIPE
+from subprocess import PIPE, Popen
 
 DIR = os.path.abspath(os.path.dirname(__file__))
 ANNO = os.path.join(DIR, 'flatAnnotatorVAR_2.0.pl')

@@ -7,19 +7,20 @@ import sys
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "tb_website.settings.gentb")
 
-from django.core.management import execute_from_command_line
 import django
+from django.core.management import execute_from_command_line
+
 django.setup()
 
-from apps.maps.models import *
-from apps.predict.models import *
-from apps.mutations.models import *
-from apps.uploads.models import *
-from apps.pipeline.models import *
-
+from django.conf import settings
 from django.db import connections
 from django.db.utils import OperationalError
-from django.conf import settings
+
+from apps.maps.models import *
+from apps.mutations.models import *
+from apps.pipeline.models import *
+from apps.predict.models import *
+from apps.uploads.models import *
 
 if settings.DB_IS_FILE and not os.path.isfile(settings.DB_NAME):
     print("""

@@ -24,11 +24,11 @@
 Extra functionality for getting titles and breadcrumbs from views.
 """
 
+from django.contrib.contenttypes.models import ContentType
+from django.db.models import Manager, QuerySet
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
-from django.db.models import Manager, QuerySet
-from django.contrib.contenttypes.models import ContentType
 
 def IterObject(typ=list): # pylint: disable=invalid-name
     """Create an object from a generator function, default is list"""

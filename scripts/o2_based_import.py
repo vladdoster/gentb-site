@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
 # pylint: disable=wrong-import-position
 
+import glob
+import json
 import os
 import sys
-import json
-import glob
-
 
 sys.path.insert(0, '.')
 #sys.path.insert(0, '..')
 
 try:
-    import manage # pylint: disable=unused-import
+    import manage  # pylint: disable=unused-import
 except ImportError as err:
     sys.stderr.write("Could not run script! Is manage.py not in the current"\
         "working directory, or is the environment not configured?:\n"\
@@ -20,22 +19,18 @@ except ImportError as err:
 
 
 import logging
-from collections import defaultdict
-
 from argparse import ArgumentParser
-from subprocess import Popen, PIPE
+from collections import defaultdict
+from subprocess import PIPE, Popen
 
 from django.db import transaction
 from django.db.utils import DataError
 
 from apps.maps.models import Country, Place
-from apps.maps.utils import COUNTRY_MAP, CITY_MAP
-
+from apps.maps.utils import CITY_MAP, COUNTRY_MAP
 from apps.mutations.csv_lookups import Lookup as CsvLookup
-from apps.mutations.models import (
-    ImportSource, Genome, Lineage, Paper, Drug,
-    StrainSource, BioProject, GeneLocus,
-)
+from apps.mutations.models import (BioProject, Drug, GeneLocus, Genome,
+                                   ImportSource, Lineage, Paper, StrainSource)
 from apps.mutations.utils import long_match, unpack_mutation_format
 
 LOGGER = logging.getLogger('apps.mutations')

@@ -18,20 +18,19 @@
 Manage uploads to django via a number of different mechanisms.
 """
 
-import os
 import gzip
 import inspect
 import logging
+import os
 
 from django.conf import settings
-from django.db.models import (
-    Model, QuerySet, SlugField, CharField, PositiveIntegerField, URLField,
-    DateTimeField, TextField, ForeignKey, CASCADE, Sum
-)
+from django.db.models import (CASCADE, CharField, DateTimeField, ForeignKey,
+                              Model, PositiveIntegerField, QuerySet, SlugField,
+                              Sum, TextField, URLField)
 from django.utils.timezone import now
 
-from .utils import Download, get_uuid
 from .files import ResumableFile
+from .utils import Download, get_uuid
 
 LOGGER = logging.getLogger('apps.uploads.models')
 

@@ -19,7 +19,8 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 
 try:
-    from adminsortable2.admin import SortableAdminMixin, SortableInlineAdminMixin
+    from adminsortable2.admin import (SortableAdminMixin,
+                                      SortableInlineAdminMixin)
 except ImportError:
     class SortableAdminMixin():
         pass
@@ -27,6 +28,7 @@ except ImportError:
         pass
 
 from .models import *
+
 
 class PipelineProgramInline(SortableInlineAdminMixin, admin.TabularInline):
     model = PipelineProgram

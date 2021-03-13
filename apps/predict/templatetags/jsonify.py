@@ -1,6 +1,6 @@
 """Add a template tag to turn python objects into JSON"""
-import types
 import json
+import types
 
 from django import template
 from django.utils.safestring import mark_safe

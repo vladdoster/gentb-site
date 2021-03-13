@@ -20,6 +20,7 @@ Common useful pipeline utilities.
 
 from collections import defaultdict
 
+
 def file_as_inputs(m2m, save_to=None):
     """Adds each m2m to the save_to dictionary"""
     if not save_to:

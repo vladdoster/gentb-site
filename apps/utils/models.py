@@ -4,6 +4,7 @@ from django.apps import apps
 from django.db import transaction
 from django.db.models import Model
 
+
 def get_all_related_objects(MyModel):
     # Taken from https://docs.djangoproject.com/en/1.9/ref/models/meta/#migrating-from-the-old-api
     return [

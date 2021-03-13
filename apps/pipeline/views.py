@@ -19,19 +19,20 @@ Provides the views for testing and reviewing pipelines.
 """
 from datetime import date, timedelta
 
-from django.views.generic import ListView, DetailView, TemplateView, RedirectView
-from django.views.generic.detail import SingleObjectMixin
-from django.contrib import messages
-from django.urls import reverse
-from django.db.models import Sum
-
-from chore.fake import FakeJobManager
 from chore import get_job_manager
+from chore.fake import FakeJobManager
+from django.contrib import messages
+from django.db.models import Sum
+from django.urls import reverse
+from django.views.generic import (DetailView, ListView, RedirectView,
+                                  TemplateView)
+from django.views.generic.detail import SingleObjectMixin
 
 from apps.tb_users.mixins import ProtectedMixin
 from apps.uploads.models import UploadFile
 
-from .models import Pipeline, PipelineRun, ProgramRun, Program
+from .models import Pipeline, PipelineRun, Program, ProgramRun
+
 
 class PipelineDetail(ProtectedMixin, DetailView): # pylint: disable=too-many-ancestors
     """Test the pipeline in the front end to test the connectivity"""

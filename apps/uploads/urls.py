@@ -20,8 +20,8 @@ Urls to upload files to the system.
 """
 from django.urls import path
 
-from .views import ResumableUploadView, RetryResumableUpload, \
-    RetryUpload, ManualUploadView, TestUpload
+from .views import (ManualUploadView, ResumableUploadView,
+                    RetryResumableUpload, RetryUpload, TestUpload)
 
 app_name = 'uploads'
 urlpatterns = [

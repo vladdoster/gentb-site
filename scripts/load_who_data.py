@@ -8,15 +8,15 @@ sys.path.insert(0, '.')
 sys.path.insert(0, '..')
 
 try:
-    import manage # pylint: disable=unused-import
+    import manage  # pylint: disable=unused-import
 except ImportError as err:
     sys.stderr.write("Could not run script! Is manage.py not in the current"\
         "working directory, or is the environment not configured?:\n"\
         "{}\n".format(err))
     sys.exit(1)
 
-from apps.mutations.utils import csv_merge
 from apps.maps.models import Country, CountryHealth
+from apps.mutations.utils import csv_merge
 
 if __name__ == '__main__':
     with open(sys.argv[1]) as fhl:

@@ -3,8 +3,10 @@
 import csv
 from io import StringIO
 
-from django.contrib.staticfiles.templatetags.staticfiles import static as _static
+from django.contrib.staticfiles.templatetags.staticfiles import \
+    static as _static
 from django.utils.functional import lazy
+
 
 def static(path, site_id=None):
     return _static(path)

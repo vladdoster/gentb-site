@@ -1,22 +1,19 @@
 
-import sys
 import logging
+import sys
 
-from vcf import VCFReader
-
+from django.core.management.base import BaseCommand
 from django.db import transaction
 from django.db.utils import DataError
-from django.core.management.base import BaseCommand
+from vcf import VCFReader
 
 from apps.maps.models import Country, Place
-from apps.maps.utils import COUNTRY_MAP, CITY_MAP
-from apps.uploads.models import UploadFile
-
+from apps.maps.utils import CITY_MAP, COUNTRY_MAP
 from apps.mutations.csv_lookups import Lookup as CsvLookup
-from apps.mutations.models import (
-    ImportSource, Genome, Lineage, Paper, Drug,
-    StrainSource, BioProject, GeneLocus)
+from apps.mutations.models import (BioProject, Drug, GeneLocus, Genome,
+                                   ImportSource, Lineage, Paper, StrainSource)
 from apps.mutations.utils import *
+from apps.uploads.models import UploadFile
 
 LOGGER = logging.getLogger('apps.mutations')
 EMPTY = {None: None, 'None': None, '': None,}

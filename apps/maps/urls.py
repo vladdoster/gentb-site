@@ -21,8 +21,8 @@ Maps urls
 
 from django.urls import path
 
-from .views import MapPage, Places, DrugList, Lineages, \
-    MutationView, LocusList, Mutations, Sources
+from .views import (DrugList, Lineages, LocusList, MapPage, Mutations,
+                    MutationView, Places, Sources)
 
 app_name = 'maps'
 urlpatterns = [

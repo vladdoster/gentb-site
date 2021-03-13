@@ -1,7 +1,11 @@
 
+from django.core.management.commands.loaddata import Command as LoadCommand
+from django.core.management.commands.loaddata import \
+    parse_apps_and_model_labels
 from django.db import transaction
-from django.core.management.commands.loaddata import Command as LoadCommand, parse_apps_and_model_labels
+
 from ...serializers import json_deserializer
+
 
 class Command(LoadCommand):
     def handle(self, *fixture_labels, **options):

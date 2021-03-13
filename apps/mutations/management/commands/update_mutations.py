@@ -1,11 +1,10 @@
 
+import logging
 from collections import OrderedDict
 
 from django.core.management.base import BaseCommand, CommandError
-
 from mutations.models import *
 
-import logging
 LOGGER = logging.getLogger('apps.mutations')
 
 

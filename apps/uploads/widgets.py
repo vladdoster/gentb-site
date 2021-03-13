@@ -23,9 +23,10 @@
 Provide widgets for uploading files to the server.
 """
 
-from django.urls import reverse
 from django.conf import settings
-from django.forms import TextInput, Textarea
+from django.forms import Textarea, TextInput
+from django.urls import reverse
+
 
 class UploadChooserWidget(TextInput):
     """

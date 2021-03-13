@@ -5,6 +5,7 @@ Kill one or many running PipelineRuns
 import sys
 
 from django.core.management.base import BaseCommand
+
 from apps.pipeline.models import PipelineRun
 
 

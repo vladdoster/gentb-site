@@ -20,33 +20,29 @@ uploads app to download large data files from the users.
 """
 import json
 import logging
-
-from hashlib import md5
-
 import os
-from os.path import join, isdir, basename
-
 from collections import defaultdict
 from datetime import timedelta
+from hashlib import md5
+from os.path import basename, isdir, join
 
-from model_utils.models import TimeStampedModel
-
-from django.db.models import (
-    Model, CASCADE, SET_NULL,
-    ForeignKey, CharField, TextField, BooleanField, DecimalField, IntegerField, DateTimeField,
-)
 from django.conf import settings
-from django.utils.text import slugify
 from django.core import serializers
+from django.db.models import (CASCADE, SET_NULL, BooleanField, CharField,
+                              DateTimeField, DecimalField, ForeignKey,
+                              IntegerField, Model, TextField)
 from django.urls import reverse
+from django.utils.text import slugify
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
+from model_utils.models import TimeStampedModel
 
-from apps.uploads.models import UploadFile
-from apps.pipeline.models import Pipeline, PipelineRun, ProgramRun
 from apps.mutations.models import Drug, GeneLocus
+from apps.pipeline.models import Pipeline, PipelineRun, ProgramRun
+from apps.uploads.models import UploadFile
 
-from .utils import lineage_spoligo, lineage_fast_caller, lineage_other_caller, filter_none
+from .utils import (filter_none, lineage_fast_caller, lineage_other_caller,
+                    lineage_spoligo)
 
 LOGGER = logging.getLogger('apps.predict')
 

@@ -5,11 +5,10 @@ settings and keys which should /NEVER/ be committed to a repository and it
 seperates out the sys-admin responsibility from the programmer's.
 """
 
-from shutil import copyfile
-
 import logging
-import sys
 import os
+import sys
+from shutil import copyfile
 
 BASE_DIR = os.path.dirname(__file__)
 SETTINGS = 'local.py'

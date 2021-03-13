@@ -2,6 +2,7 @@
 
 from django.db import migrations
 
+
 def keep_to_for(apps, schema_editor):
     Program = apps.get_model("pipeline", "Program")
     for program in Program.objects.all():

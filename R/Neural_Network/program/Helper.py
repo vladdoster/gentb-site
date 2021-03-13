@@ -4,15 +4,17 @@
 # jimmy.royer@analysisgroup.com
 # May 29, 2016
 
-from sknn.mlp import Classifier, Layer
-import matplotlib.pyplot as plt
-from matplotlib.backends.backend_pdf import PdfPages
-from sklearn.grid_search import GridSearchCV
-from sklearn import cross_validation
-from sklearn.metrics import roc_curve, auc
-from sklearn.ensemble import RandomForestClassifier
-import numpy as np
 import itertools
+
+import matplotlib.pyplot as plt
+import numpy as np
+from matplotlib.backends.backend_pdf import PdfPages
+from sklearn import cross_validation
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.grid_search import GridSearchCV
+from sklearn.metrics import auc, roc_curve
+from sknn.mlp import Classifier, Layer
+
 
 ########################################################################      
 ## ROC - AUC                                                           #

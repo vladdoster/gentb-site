@@ -1,7 +1,9 @@
 
-from django.views.generic import CreateView, TemplateView
 from django.urls import reverse_lazy
+from django.views.generic import CreateView, TemplateView
+
 from apps.tb_users.forms import SignUpForm
+
 
 class UserSignUp(CreateView):
     template_name = 'tb_users/signup_page.html'

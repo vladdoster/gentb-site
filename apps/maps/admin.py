@@ -1,6 +1,7 @@
 from django.contrib.admin import ModelAdmin, StackedInline, register
 
-from .models import Place, Country, CountryHealth, CountryDetail
+from .models import Country, CountryDetail, CountryHealth, Place
+
 
 @register(Place)
 class PlaceAdmin(ModelAdmin):

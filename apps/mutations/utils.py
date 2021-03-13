@@ -18,16 +18,15 @@
 Match and extract information from snp names and other encoded information.
 """
 
-import os
-import re
 import csv
 import json
+import os
+import re
 import sys
-
-from functools import reduce
-from collections import defaultdict, OrderedDict
-from operator import or_
+from collections import OrderedDict, defaultdict
 from datetime import date
+from functools import reduce
+from operator import or_
 
 from django.db.models import Q
 

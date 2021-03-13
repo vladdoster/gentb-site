@@ -2,14 +2,14 @@
 # pylint: disable=wrong-import-position
 # dataset using total wealth variable from world bank wealth accounting dataset
 
-import sys
 import csv
+import sys
 
 sys.path.insert(0, '.')
 sys.path.insert(0, '..')
 
 try:
-    import manage # pylint: disable=unused-import
+    import manage  # pylint: disable=unused-import
 except ImportError as err:
     sys.stderr.write("Could not run script! Is manage.py not in the current"\
         "working directory, or is the environment not configured?:\n"\

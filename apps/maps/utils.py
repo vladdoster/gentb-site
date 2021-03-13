@@ -18,7 +18,7 @@
 Data management for maps, basic functions.
 """
 
-from collections import defaultdict, OrderedDict
+from collections import OrderedDict, defaultdict
 
 COUNTRY_MAP = {
     'unknown': None,

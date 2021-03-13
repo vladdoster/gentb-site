@@ -21,11 +21,9 @@ Provide some basic front end views for pipeline testing and review.
 
 from django.urls import path
 
-from .views import (
-    PipelineDetail, PipelineRunList, PipelineRunDetail,
-    JobViewer, ProgramRunDetail, ProgramRunReTry, PipelineList,
-    DiskUsage,
-)
+from .views import (DiskUsage, JobViewer, PipelineDetail, PipelineList,
+                    PipelineRunDetail, PipelineRunList, ProgramRunDetail,
+                    ProgramRunReTry)
 
 app_name = 'pipeline'
 urlpatterns = [

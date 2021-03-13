@@ -19,9 +19,9 @@
 # Code imported from inkscape-web 2017-10-18 AGPLv3
 #
 
+from django.conf import settings
 from git import Repo
 
-from django.conf import settings
 from .utils import BaseMiddleware, to
 
 BRANCHES = getattr(settings, 'VERSION_BRANCHES', [])

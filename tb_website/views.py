@@ -24,6 +24,7 @@ Template Error
 
 from django.views.generic import TemplateView
 
+
 class Error(TemplateView):
     @classmethod
     def as_error(cls, status):
