@@ -5425,7 +5425,7 @@ nv.models.furiousLegend = function() {
             if(expanded) {
                 return d.disengaged ? color(d,i) : '#fff';
             } else if (!expanded) {
-                return !!d.disabled ? color(d,i) : '#fff';
+                return d.disabled ? color(d,i) : '#fff';
             }
         }
 
@@ -5433,7 +5433,7 @@ nv.models.furiousLegend = function() {
             if(expanded && vers == 'furious') {
                 return d.disengaged ? '#fff' : color(d,i);
             } else {
-                return !!d.disabled ? '#fff' : color(d,i);
+                return d.disabled ? '#fff' : color(d,i);
             }
         }
 
@@ -6443,7 +6443,7 @@ nv.models.legend = function() {
                 return d.disengaged ? '#000' : '#fff';
             } else if (!expanded) {
                 if(!d.color) d.color = color(d,i);
-                return !!d.disabled ? d.color : '#fff';
+                return d.disabled ? d.color : '#fff';
             }
         }
 
@@ -6460,7 +6460,7 @@ nv.models.legend = function() {
             if(expanded && vers == 'furious') {
                 return 1;
             } else {
-                return !!d.disabled ? 0 : 1;
+                return d.disabled ? 0 : 1;
             }
         }
 
