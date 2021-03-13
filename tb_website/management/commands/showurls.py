@@ -8,7 +8,7 @@ from django.core.management.base import BaseCommand, CommandError
 
 import tb_website.urls
 
-class Url(object):
+class Url():
     is_module = False
     is_view = False
 
@@ -107,7 +107,7 @@ class UrlFunction(Url):
         tag = super(UrlFunction, self).__str__()
         return "%s > %s()" % (tag, self.module.__name__)
 
-class WebsiteUrls(object):
+class WebsiteUrls():
     """A class that can loop through urls in a tree structure"""
     def __iter__(self):
         """

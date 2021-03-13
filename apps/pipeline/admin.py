@@ -21,9 +21,9 @@ from django.utils.safestring import mark_safe
 try:
     from adminsortable2.admin import SortableAdminMixin, SortableInlineAdminMixin
 except ImportError:
-    class SortableAdminMixin(object):
+    class SortableAdminMixin():
         pass
-    class SortableInlineAdminMixin(object):
+    class SortableInlineAdminMixin():
         pass
 
 from .models import *

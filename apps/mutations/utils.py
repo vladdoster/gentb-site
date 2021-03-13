@@ -417,7 +417,7 @@ def long_match(MAP, d, value, model=None, default='NOP', *cols, **filt):
     return d[value]
 
 
-class StatusBar(object):
+class StatusBar():
     """A generic command line status bar, use like so:
 
     for item in StatusBar("Label:", 300, looper_function):

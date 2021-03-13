@@ -2,7 +2,7 @@
 from django.conf import settings
 DB = list(settings.DATABASES)
 
-class PrivateAppRouter(object):
+class PrivateAppRouter():
     """
     Allows an app to have it's own private database if needed
     """
