@@ -35,7 +35,7 @@ if __name__=="__main__":
 # detects the octal representation created upstream
   for line in sys.stdin:
     if line.startswith("! Octal:"):
-      fname = re.findall('\[.*\]', line)[0]
+      fname = re.findall(r'\[.*\]', line)[0]
       if not fname:
         sys.exit("Error: No file name detected.")
       query = line[8 + len(fname):].rstrip() # remove trailing newline char and fname
