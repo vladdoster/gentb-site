@@ -108,8 +108,7 @@
         else { $opt = $opt.resumableObj; }
       }
       if ($opt instanceof Resumable) {
-        if (typeof $opt.opts[o] !== 'undefined') { return $opt.opts[o]; }
-        else { return $opt.defaults[o]; }
+        return typeof $opt.opts[o] !== 'undefined' ? $opt.opts[o] : $opt.defaults[o];
       }
     };
 
