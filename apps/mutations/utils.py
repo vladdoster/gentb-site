@@ -321,8 +321,8 @@ def file_generator(*required, **_):
                 raise FileNotFound("File '%s' Not Found" % filename)
 
             # Get the right content unpacker
-            _loader = LOADERS.get(kw.get('loader', None), None)\
-                   or LOADERS.get(filename.rsplit('.', 1)[-1], None)
+            _loader = LOADERS.get(kw.get('loader', None))\
+                   or LOADERS.get(filename.rsplit('.', 1)[-1])
             if _loader is None:
                 raise TypeError("Can't parse '%s' unknown type." % filename)
 
