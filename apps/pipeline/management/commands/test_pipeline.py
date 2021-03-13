@@ -28,7 +28,7 @@ class Command(BaseCommand):
         rows = []
 
         # longest string in each column
-        cmax = dict()
+        cmax = {}
 
         for l in labels:
             cmax[l] = len(l)
