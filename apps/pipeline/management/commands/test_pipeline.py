@@ -7,7 +7,7 @@ import time
 import datetime
 
 from django.core.management.base import BaseCommand
-from apps.pipeline.models import Pipeline, PipelineRun
+from apps.pipeline.models import Pipeline
 
 
 class PipelineDoesNotExist(Exception):

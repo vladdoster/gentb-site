@@ -4,7 +4,7 @@ Shows all the available urls for a django website, useful for debugging.
 
 import types
 
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 
 import tb_website.urls
 

@@ -25,7 +25,7 @@ import os
 from django.conf import settings
 from django.db.models import Model, Manager, Q, QuerySet, \
     CharField, PositiveIntegerField, ForeignKey, ManyToManyField, URLField, \
-    SlugField, IntegerField, SmallIntegerField, BooleanField, DateField, DateTimeField, \
+    SlugField, IntegerField, BooleanField, DateField, DateTimeField, \
     TextField, DecimalField, CASCADE, SET_NULL
 from django.urls import reverse
 

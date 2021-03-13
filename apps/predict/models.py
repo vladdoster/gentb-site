@@ -18,8 +18,6 @@
 Provide prediction app using the pipeline for building predictions and the
 uploads app to download large data files from the users.
 """
-
-import sys
 import json
 import logging
 
@@ -28,7 +26,7 @@ from hashlib import md5
 import os
 from os.path import join, isdir, basename
 
-from collections import defaultdict, OrderedDict
+from collections import defaultdict
 from datetime import timedelta
 
 from model_utils.models import TimeStampedModel
