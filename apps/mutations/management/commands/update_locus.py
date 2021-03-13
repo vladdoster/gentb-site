@@ -6,9 +6,7 @@ Gene Locus database.
 import logging
 from collections import OrderedDict
 
-from django.core.management.base import BaseCommand, CommandError
-
-from apps.mutations.models import GeneLocus
+from django.core.management.base import BaseCommand
 
 LOGGER = logging.getLogger('apps.mutations')
 
@@ -29,7 +27,8 @@ class Command(BaseCommand):
         with open(filename, 'r') as fhl:
             self.process_data(fhl.read().split('\n'))
 
-    def process_data(self, data):
+    @staticmethod
+    def process_data(data):
         drugs = OrderedDict()
         drug = None
         for item in data:

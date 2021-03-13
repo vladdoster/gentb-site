@@ -8153,7 +8153,7 @@
     };
     line.interpolate = function(_) {
       if (!arguments.length) return interpolateKey;
-      if (typeof _ === "function") interpolateKey = interpolate = _; else interpolateKey = (interpolate = d3_svg_lineInterpolators.get(_) || d3_svg_lineLinear).key;
+      interpolateKey = typeof _ === "function" ? (interpolate = _) : (interpolate = d3_svg_lineInterpolators.get(_) || d3_svg_lineLinear).key;
       return line;
     };
     line.tension = function(_) {
@@ -8445,7 +8445,7 @@
     };
     area.interpolate = function(_) {
       if (!arguments.length) return interpolateKey;
-      if (typeof _ === "function") interpolateKey = interpolate = _; else interpolateKey = (interpolate = d3_svg_lineInterpolators.get(_) || d3_svg_lineLinear).key;
+      interpolateKey = typeof _ === "function" ? (interpolate = _) : (interpolate = d3_svg_lineInterpolators.get(_) || d3_svg_lineLinear).key;
       interpolateReverse = interpolate.reverse || interpolate;
       L = interpolate.closed ? "M" : "L";
       return area;

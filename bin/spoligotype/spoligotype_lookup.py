@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # Copyright 2014, Thomas R. Ioerger ..
-import sys,os,re
+import sys,re
 
 def octal(s): # converts to binary
   o = ''
@@ -35,7 +35,7 @@ if __name__=="__main__":
 # detects the octal representation created upstream
   for line in sys.stdin:
     if line.startswith("! Octal:"):
-      fname = re.findall('\[.*\]', line)[0]
+      fname = re.findall(r'\[.*\]', line)[0]
       if not fname:
         sys.exit("Error: No file name detected.")
       query = line[8 + len(fname):].rstrip() # remove trailing newline char and fname
@@ -56,7 +56,7 @@ if __name__=="__main__":
     id,spol = data[i][0],data[i][1]
     octspol = octal(spol)
     fam = ' '.join(data[i][2:])
-    if subsumes(octspol,binquery)==True:
+    if subsumes(octspol,binquery) is True:
       sim = similarity(octspol,binquery)
       scores.append((sim,i,id,spol,octspol,fam))
   
