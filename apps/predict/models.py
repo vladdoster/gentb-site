@@ -53,20 +53,7 @@ from .utils import lineage_spoligo, lineage_fast_caller, lineage_other_caller, f
 LOGGER = logging.getLogger('apps.predict')
 
 # Basic status matrix, file_status + processing_status
-STATUS = dict([
-    ('FILE_NONE', (_('No Files Uploaded'), 'danger', 9)),
-    ('FILE_WAIT', (_('Dataset Confirmed'), 'default', 10)),
-    ('FILE_START', (_('File Retrieval Started'), 'primary', 8)),
-    ('FILE_ERROR', (_('File Retrieval Failed'), 'danger', 10)),
-    ('RUN_NONE', (_('No Strains to process'), 'danger', 10)),
-    ('RUN_WAIT', (_('File Retrieval Success'), 'default', 8)),
-    ('RUN_START', (_('Processing Started'), 'primary', 6)),
-    ('RUN_ERROR', (_('Processing Failed'), 'danger', 4)),
-    ('RUN_DONE', (_('Processing Success'), 'default', 10)),
-    ('READY', (_('Prediction Ready'), 'success', 0)),
-    ('INVALID', (_('Lacks Quality'),'warning', 8)),
-    ('TIMEOUT', (_('Processing Timed Out'), 'danger', 3)),
-])
+STATUS = {'FILE_NONE': (_('No Files Uploaded'), 'danger', 9), 'FILE_WAIT': (_('Dataset Confirmed'), 'default', 10), 'FILE_START': (_('File Retrieval Started'), 'primary', 8), 'FILE_ERROR': (_('File Retrieval Failed'), 'danger', 10), 'RUN_NONE': (_('No Strains to process'), 'danger', 10), 'RUN_WAIT': (_('File Retrieval Success'), 'default', 8), 'RUN_START': (_('Processing Started'), 'primary', 6), 'RUN_ERROR': (_('Processing Failed'), 'danger', 4), 'RUN_DONE': (_('Processing Success'), 'default', 10), 'READY': (_('Prediction Ready'), 'success', 0), 'INVALID': (_('Lacks Quality'),'warning', 8), 'TIMEOUT': (_('Processing Timed Out'), 'danger', 3)}
 
 def get_timeout(timeout=14):
     """Returns the timedate when the prediction should time out"""

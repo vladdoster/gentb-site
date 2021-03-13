@@ -161,7 +161,7 @@ def as_set(val):
     """
     if val is None:
         return set()
-    return set(val) if isinstance(val, (tuple, list)) else set([val])
+    return set(val) if isinstance(val, (tuple, list)) else {val}
 
 class DataTableMixin():
     """
