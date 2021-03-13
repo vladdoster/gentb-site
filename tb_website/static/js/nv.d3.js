@@ -453,13 +453,9 @@ nv.interactiveBisect = function (values, searchVal, xAccessor) {
         return null;
     }
     var _xAccessor;
-    if (typeof xAccessor !== 'function') {
-        _xAccessor = function(d) {
+    _xAccessor = typeof xAccessor !== 'function' ? function(d) {
             return d.x;
-        }
-    } else {
-        _xAccessor = xAccessor;
-    }
+        } : xAccessor;
     var _cmp = function(d, v) {
         // Accessors are no longer passed the index of the element along with
         // the element itself when invoked by d3.bisector.
@@ -492,11 +488,7 @@ nv.interactiveBisect = function (values, searchVal, xAccessor) {
         nextValue = nextIndex;
     }
 
-    if (Math.abs(nextValue - searchVal) >= Math.abs(currentValue - searchVal)) {
-        return index;
-    } else {
-        return nextIndex
-    }
+    return Math.abs(nextValue - searchVal) >= Math.abs(currentValue - searchVal) ? index : nextIndex;
 };
 
 /*
@@ -1426,11 +1418,7 @@ nv.utils.symbol = function() {
     function symbol(d,i) {
         var t = type.call(this,d,i);
         var s = size.call(this,d,i);
-        if (d3.svg.symbolTypes.indexOf(t) !== -1) {
-            return d3.svg.symbol().type(t).size(s)();
-        } else {
-            return nv.utils.symbolMap.get(t)(s);
-        }
+        return d3.svg.symbolTypes.indexOf(t) !== -1 ? d3.svg.symbol().type(t).size(s)() : nv.utils.symbolMap.get(t)(s);
     }
     symbol.type = function(_) {
         if (!arguments.length) return type;
@@ -7028,11 +7016,7 @@ nv.models.lineChart = function() {
                         var currentValues = series.values.filter(function(d,i) {
                             // Checks if the x point is between the extents, handling case where extent[0] is greater than extent[1]
                             // (e.g. x domain is manually set to reverse the x-axis)
-                            if(extent[0] <= extent[1]) {
-                                return lines.x()(d,i) >= extent[0] && lines.x()(d,i) <= extent[1];
-                            } else {
-                                return lines.x()(d,i) >= extent[1] && lines.x()(d,i) <= extent[0];
-                            }
+                            return extent[0] <= extent[1] ? lines.x()(d,i) >= extent[0] && lines.x()(d,i) <= extent[1] : lines.x()(d,i) >= extent[1] && lines.x()(d,i) <= extent[0];
                         });
 
                         pointIndex = nv.interactiveBisect(currentValues, e.pointXValue, lines.x());
@@ -7441,11 +7425,7 @@ nv.models.linePlusBarChart = function() {
             var dataBars = data.filter(function(d) { return !d.disabled && d.bar });
             var dataLines = data.filter(function(d) { return !d.bar }); // removed the !d.disabled clause here to fix Issue #240
 
-            if (dataBars.length && !switchYAxisOrder) {
-                x = bars.xScale();
-            } else {
-                x = lines.xScale();
-            }
+            x = dataBars.length && !switchYAxisOrder ? bars.xScale() : lines.xScale();
 
             x2 = x2Axis.scale();
 
@@ -7753,11 +7733,7 @@ nv.models.linePlusBarChart = function() {
                 );
 
                 // Update Main (Focus) X Axis
-                if (dataBars.length && !switchYAxisOrder) {
-                    x = bars.xScale();
-                } else {
-                    x = lines.xScale();
-                }
+                x = dataBars.length && !switchYAxisOrder ? bars.xScale() : lines.xScale();
 
                 xAxis
                     .scale(x)
@@ -8099,11 +8075,7 @@ nv.models.multiBar = function() {
                 var domain = d.y;
                 // increase the domain range if this series is stackable
                 if (stacked && !data[d.idx].nonStackable) {
-                    if (d.y > 0){
-                        domain = d.y1
-                    } else {
-                        domain = d.y1 + d.y
-                    }
+                    domain = d.y > 0 ? d.y1 : d.y1 + d.y;
                 }
                 return domain;
             }).concat(forceY)))
@@ -8266,21 +8238,13 @@ nv.models.multiBar = function() {
                             if (getY(d,i) < 0){
                                 yVal = y(0);
                             } else {
-                                if (y(0) - y(getY(d,i)) < -1){
-                                    yVal = y(0) - 1;
-                                } else {
-                                    yVal = y(getY(d, i)) || 0;
-                                }
+                                yVal = y(0) - y(getY(d,i)) < -1 ? y(0) - 1 : y(getY(d, i)) || 0;
                             }
                         }
                         return yVal;
                     })
                     .attr('height', function(d,i,j) {
-                        if (!data[j].nonStackable) {
-                            return Math.max(Math.abs(y(d.y+d.y0) - y(d.y0)), 0);
-                        } else {
-                            return Math.max(Math.abs(y(getY(d,i)) - y(0)), 0) || 0;
-                        }
+                        return !data[j].nonStackable ? Math.max(Math.abs(y(d.y+d.y0) - y(d.y0)), 0) : Math.max(Math.abs(y(getY(d,i)) - y(0)), 0) || 0;
                     })
                     .attr('x', function(d,i,j) {
                         var width = 0;
@@ -11249,11 +11213,7 @@ nv.models.parallelCoordinatesChart = function () {
                     var dim = evt.dimensions.filter(function (dd) {return dd.key === d;})[0];
                     if(dim){
                         var v;
-                        if (isNaN(evt.values[d]) || isNaN(parseFloat(evt.values[d]))) {
-                            v = nanValue;
-                        } else {
-                            v = dim.format(evt.values[d]);
-                        }
+                        v = isNaN(evt.values[d]) || isNaN(parseFloat(evt.values[d])) ? nanValue : dim.format(evt.values[d]);
                         tp.series.push({ idx: dim.currentPosition, key: d, value: v, color: dim.color });
                     }
                 });
@@ -12731,8 +12691,7 @@ nv.models.scatter = function() {
                     var min = d3.min(seriesData.map(function(d) { if (d.y !== 0) return d.y; }));
                     y.clamp(true)
                         .domain(yDomain || d3.extent(seriesData.map(function(d) {
-                            if (d.y !== 0) return d.y;
-                            else return min * 0.1;
+                            return d.y !== 0 ? d.y : min * 0.1;
                         }).concat(forceY)))
                         .range(yRange || [availableHeight, 0]);
                 } else {
@@ -12885,10 +12844,7 @@ nv.models.scatter = function() {
                     var vPointPaths = pointPaths
                         .enter().append("svg:path")
                         .attr("d", function(d) {
-                            if (!d || !d.data || d.data.length === 0)
-                                return 'M 0 0';
-                            else
-                                return "M" + d.data.join(",") + "Z";
+                            return !d || !d.data || d.data.length === 0 ? 'M 0 0' : "M" + d.data.join(",") + "Z";
                         })
                         .attr("id", function(d,i) {
                             return "nv-path-"+i; })
@@ -14666,12 +14622,7 @@ nv.models.stackedAreaChart = function() {
 
             if (showYAxis) {
                 var ticks;
-                if (stacked.offset() === 'wiggle') {
-                    ticks = 0;
-                }
-                else {
-                    ticks = nv.utils.calcTicksY(availableHeight/36, data);
-                }
+                ticks = stacked.offset() === 'wiggle' ? 0 : nv.utils.calcTicksY(availableHeight/36, data);
                 yAxis.scale(y)
                     ._ticks(ticks)
                     .tickSize(-availableWidth, 0);
@@ -15072,15 +15023,11 @@ nv.models.sunburst = function() {
         , container = null
         , color = nv.utils.defaultColor()
         , showLabels = false
-        , labelFormat = function(d){if(mode === 'count'){return d.name + ' #' + d.value}else{return d.name + ' ' + (d.value || d.size)}}
+        , labelFormat = function(d){return mode === 'count' ? d.name + ' #' + d.value : d.name + ' ' + (d.value || d.size);}
         , labelThreshold = 0.02
         , sort = function(d1, d2){return d1.name > d2.name;}
         , key = function(d,i){
-            if (d.parent !== undefined) {
-                return d.name + '-' + d.parent.name + '-' + i;
-            } else {
-                return d.name;
-            }
+            return d.parent !== undefined ? d.name + '-' + d.parent.name + '-' + i : d.name;
         }
         , groupColorByParent = true
         , duration = 500
@@ -15106,12 +15053,7 @@ nv.models.sunburst = function() {
 
     function rotationToAvoidUpsideDown(d) {
         var centerAngle = computeCenterAngle(d);
-        if(centerAngle > 90){
-            return 180;
-        }
-        else {
-            return 0;
-        }
+        return centerAngle > 90 ? 180 : 0;
     }
 
     function computeCenterAngle(d) {
@@ -15141,16 +15083,11 @@ nv.models.sunburst = function() {
         yd = d3.interpolate(y.domain(), [node.y, 1]),
         yr = d3.interpolate(y.range(), [node.y ? 20 : 0, radius]);
 
-        if (i === 0) {
-            return function() {return arc(e);}
-        }
-        else {
-            return function (t) {
+        return i === 0 ? function() {return arc(e);} : function (t) {
                 x.domain(xd(t));
                 y.domain(yd(t)).range(yr(t));
                 return arc(e);
-            }
-        };
+            };;
     }
 
     function arcTweenUpdate(d) {
@@ -15225,12 +15162,7 @@ nv.models.sunburst = function() {
                         arcText.transition().duration(duration)
                         .text( function(e){return labelFormat(e) })
                         .attr("opacity", function(d){
-                            if(labelThresholdMatched(d)) {
-                                return 1;
-                            }
-                            else {
-                                return 0;
-                            }
+                            return labelThresholdMatched(d) ? 1 : 0;
                         })
                         .attr("transform", function() {
                             var width = this.getBBox().width;
@@ -15242,12 +15174,7 @@ nv.models.sunburst = function() {
                             else {
                                 var centerAngle = computeCenterAngle(e);
                                 var rotation = rotationToAvoidUpsideDown(e);
-                                if (rotation === 0) {
-                                    return 'rotate('+ centerAngle +')translate(' + (y(e.y) + 5) + ',0)';
-                                }
-                                else {
-                                    return 'rotate('+ centerAngle +')translate(' + (y(e.y) + width + 5) + ',0)rotate(' + rotation + ')';
-                                }
+                                return rotation === 0 ? 'rotate('+ centerAngle +')translate(' + (y(e.y) + 5) + ',0)' : 'rotate('+ centerAngle +')translate(' + (y(e.y) + width + 5) + ',0)rotate(' + rotation + ')';
                             }
                         });
                     }
@@ -15365,12 +15292,7 @@ nv.models.sunburst = function() {
                     .transition()
                     .duration(duration)
                     .attr("opacity", function(d){
-                        if(labelThresholdMatched(d)) {
-                            return 1;
-                        }
-                        else {
-                            return 0;
-                        }
+                        return labelThresholdMatched(d) ? 1 : 0;
                     })
                     .attr("transform", function(d) {
                         var width = this.getBBox().width;
@@ -15380,12 +15302,7 @@ nv.models.sunburst = function() {
                         else {
                             var centerAngle = computeCenterAngle(d);
                             var rotation = rotationToAvoidUpsideDown(d);
-                            if (rotation === 0) {
-                                return 'rotate('+ centerAngle +')translate(' + (y(d.y) + 5) + ',0)';
-                            }
-                            else {
-                                return 'rotate('+ centerAngle +')translate(' + (y(d.y) + width + 5) + ',0)rotate(' + rotation + ')';
-                            }
+                            return rotation === 0 ? 'rotate('+ centerAngle +')translate(' + (y(d.y) + 5) + ',0)' : 'rotate('+ centerAngle +')translate(' + (y(d.y) + width + 5) + ',0)rotate(' + rotation + ')';
                         }
                     });
             }
