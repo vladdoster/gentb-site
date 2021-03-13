@@ -47,9 +47,8 @@ def test_quality(name, fhl, threshold=15):
     if pc < 2:
         sys.stderr.write('PASS\n')
         return 0
-    else:
-        sys.stderr.write('FAIL : %d%% of the DR sites have coverage <%dx\n' % (pc, threshold))
-        return 1
+    sys.stderr.write('FAIL : %d%% of the DR sites have coverage <%dx\n' % (pc, threshold))
+    return 1
 
 
 def test_qc_file(filename, threshold=15):
