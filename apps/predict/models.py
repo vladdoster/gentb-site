@@ -489,7 +489,8 @@ class PredictStrain(Model):
             except Exception:
                 yield None, False
 
-    def _prediction_from_file(self, matrix_fn):
+    @staticmethod
+    def _prediction_from_file(matrix_fn):
         m_A, m_B, m_C, m_D = {}, {}, {}, {}
         with open(matrix_fn, 'r') as fhl:
             parts = json.loads(fhl.read())

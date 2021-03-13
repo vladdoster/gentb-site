@@ -27,7 +27,8 @@ class Command(BaseCommand):
         with open(filename, 'r') as fhl:
             self.process_data(fhl.read().split('\n'))
 
-    def process_data(self, data):
+    @staticmethod
+    def process_data(data):
         drugs = OrderedDict()
         drug = None
         for item in data:

@@ -139,7 +139,8 @@ class DataSlicerMixin():
             qset = qset.values(*vals)
         return qset
 
-    def get_list(self, qs, column, *cols):
+    @staticmethod
+    def get_list(qs, column, *cols):
         """Returns a flat list for this column"""
         if cols:
             qs = qs.values_list(column, *cols)
@@ -210,7 +211,8 @@ class DataTableMixin():
         db_columns = [self.column_to_django(col) for col in columns]
         return [self.prep_item(item, db_columns, **extra) for item in qset] #.values(*db_columns)]
 
-    def prep_item(self, obj, columns, **extra):
+    @staticmethod
+    def prep_item(obj, columns, **extra):
         """
         Prepare this item for output using the requested columns.
         """
@@ -225,7 +227,8 @@ class DataTableMixin():
         ret.update(extra)
         return ret
 
-    def column_to_django(self, column, db=True):
+    @staticmethod
+    def column_to_django(column, db=True):
         """We calculate the column's django address,
 
         If db is True, then this must return the database field, if false

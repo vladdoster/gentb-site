@@ -109,7 +109,8 @@ class AddNote(PredictMixin, CreateView):
 class ScatterPlot(JsonView, SingleObjectMixin):
     model = PredictResult
 
-    def build_loci_list(self, drug, dataset):
+    @staticmethod
+    def build_loci_list(drug, dataset):
         """
         Compile a list of all loci for this drug used in the dataset.
         """

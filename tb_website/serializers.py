@@ -173,7 +173,8 @@ class BigDeserializer():
             return None # Any error, defer the object.
 
     @to(dict)
-    def build_data(self, model, field_names, pk, data, using=None):
+    @staticmethod
+    def build_data(model, field_names, pk, data, using=None):
         m2m = {}
         if pk is not None:
             try:

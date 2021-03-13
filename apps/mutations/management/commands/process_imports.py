@@ -179,7 +179,8 @@ class Command(BaseCommand):
         self.save_mutations(strain, var)
         return name
 
-    def save_mutations(self, strain, var):
+    @staticmethod
+    def save_mutations(strain, var):
         """Save all the mutations in the var file"""
         for snp in var.values():
             #gene = snp['regionid1']
