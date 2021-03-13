@@ -22,12 +22,12 @@ Provides the drug, locus, mutation data for the progressive dropdown inputs.
 
 from collections import defaultdict
 
+from django.views.generic import DetailView, FormView, ListView, TemplateView
+
 from apps.maps.mixins import JsonView
 
-from django.views.generic import TemplateView, FormView, DetailView, ListView
-
-from .models import ImportSource, Mutation
 from .forms import DataUploaderForm
+from .models import ImportSource, Mutation
 from .utils import info_mutation_format, match_snp_name
 
 

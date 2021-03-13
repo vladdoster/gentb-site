@@ -8,9 +8,9 @@
 # Uncomment to Run on GPU
 #from sknn.platform import gpu32
 import os
-import numpy as np
 import pickle
 
+import numpy as np
 
 # Change to Current Directory
 os.chdir(r'T:/Share/Jimmy/gentb-site/R/Neural_Network')

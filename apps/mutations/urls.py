@@ -21,7 +21,8 @@ URLs for mutation data
 
 from django.urls import path
 
-from .views import DropDownData, UploadData, UploadList, UploadView, MutationView
+from .views import (DropDownData, MutationView, UploadData, UploadList,
+                    UploadView)
 
 app_name = 'genes'
 urlpatterns = [ # pylint: disable=invalid-name

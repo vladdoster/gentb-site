@@ -22,6 +22,7 @@ from django.forms import Form
 
 from .fields import UploadField
 
+
 class TestUploadForm(Form):
     test_files = UploadField(
         extensions=['.vcf'],

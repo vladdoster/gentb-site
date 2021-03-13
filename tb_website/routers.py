@@ -1,5 +1,6 @@
 
 from django.conf import settings
+
 DB = list(settings.DATABASES)
 
 class PrivateAppRouter():

@@ -1,8 +1,8 @@
 
+import getpass
+import json
 import os
 import sys
-import json
-import getpass
 
 from tb_website.settings.base import *
 

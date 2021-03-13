@@ -19,13 +19,14 @@
 Predict app's urls
 """
 
-from django.urls import path
 from django.conf.urls import include, url
+from django.urls import path
 
-from .views import (
-    Datasets, UploadChoices, UploadView, DatasetView, AddNote, ScatterPlot,
-    DatasetViewProcessing, DatasetViewOutput, DatasetViewPredict, DatasetViewLineages
-)
+from .views import (AddNote, Datasets, DatasetView, DatasetViewLineages,
+                    DatasetViewOutput, DatasetViewPredict,
+                    DatasetViewProcessing, ScatterPlot, UploadChoices,
+                    UploadView)
+
 
 def url_tree(regex, *urls):
     class UrlTwig():

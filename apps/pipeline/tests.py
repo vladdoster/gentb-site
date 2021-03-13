@@ -20,12 +20,12 @@ Test core shell functionality for the pipeline
 
 import os
 import time
-from chore import get_job_manager
 
+from chore import get_job_manager
 from django.test import override_settings
 from extratest.base import ExtraTestCase
 
-from apps.pipeline.models import Program, ProgramFile, Pipeline
+from apps.pipeline.models import Pipeline, Program, ProgramFile
 
 DIR = os.path.dirname(__file__)
 FIX = os.path.join(DIR, 'fixtures')

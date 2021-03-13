@@ -2,18 +2,17 @@
 Submit the pipeline job as soon as the file download is complete.
 """
 import os
+import shutil
 import sys
 import time
-import shutil
 from datetime import datetime
 
-from django.core.management.base import BaseCommand
-from django.contrib.sites.models import Site
-from django.template.loader import get_template
-from django.core.mail import send_mail
-from django.conf import settings
-
 from chore import JobSubmissionError
+from django.conf import settings
+from django.contrib.sites.models import Site
+from django.core.mail import send_mail
+from django.core.management.base import BaseCommand
+from django.template.loader import get_template
 
 from apps.pipeline.models import PrepareError
 from apps.predict.models import PredictDataset, PredictStrain, get_timeout

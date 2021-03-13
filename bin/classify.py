@@ -16,8 +16,8 @@
 #
 # AUTHOR: Luca Freschi and David Hughes
 
-import sys
 import re
+import sys
 
 
 # Iterates through stdin looking for the string that matches kraken2's

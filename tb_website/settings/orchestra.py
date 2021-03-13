@@ -3,7 +3,6 @@ This module graps a configured database from
 """
 
 import os
-
 from collections import defaultdict
 
 DB_ENGINES = [

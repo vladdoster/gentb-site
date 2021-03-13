@@ -8,6 +8,7 @@ from django.core.management.base import BaseCommand
 
 import tb_website.urls
 
+
 class Url():
     is_module = False
     is_view = False

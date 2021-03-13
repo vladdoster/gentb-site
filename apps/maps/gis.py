@@ -1,10 +1,10 @@
 """
 Provide a little bit of abstraction for gis.
 """
-from django.db.models import TextField, Manager
+from django.db.models import Manager, TextField
 
 try:
-    from django.contrib.gis.db.models import MultiPolygonField, MultiPointField
+    from django.contrib.gis.db.models import MultiPointField, MultiPolygonField
 except Exception:
     raise
     def MultiPolygonField(*args, **kw):

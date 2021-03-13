@@ -20,21 +20,24 @@ Views for the mapping application
 
 from __future__ import print_function
 
-import re
 import json
-from collections import defaultdict, OrderedDict
-from django.views.generic import TemplateView, ListView
-from django.views.decorators.csrf import csrf_exempt
-from django.utils.decorators import method_decorator
+import re
+from collections import OrderedDict, defaultdict
+
 from django.db.models import Count
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import ListView, TemplateView
 
-from apps.mutations.models import (
-    ImportSource, StrainSource, StrainMutation, GeneLocus, StrainResistance,
-    Mutation, Paper, BioProject, RESISTANCE, RESISTANCE_GROUP)
+from apps.mutations.models import (RESISTANCE, RESISTANCE_GROUP, BioProject,
+                                   GeneLocus, ImportSource, Mutation, Paper,
+                                   StrainMutation, StrainResistance,
+                                   StrainSource)
 
-from .mixins import JsonView, DataSlicerMixin, DataTableMixin
+from .mixins import DataSlicerMixin, DataTableMixin, JsonView
+from .models import Country, CountryDetail, CountryHealth
 from .utils import GraphData, many_lookup
-from .models import Country, CountryHealth, CountryDetail
+
 
 def get_gdp(self, **_):
     """ Getter for country detail gdp"""

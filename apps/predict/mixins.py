@@ -2,10 +2,11 @@
 Basic view mixins for predict views
 """
 
-from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 from .models import PredictDataset
+
 
 class PredictMixin():
     """The baseline predict view"""

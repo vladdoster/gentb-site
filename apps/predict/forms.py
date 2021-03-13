@@ -18,20 +18,18 @@
 Django forms for adding PredictDataset objects as well as a Confirmation form
 """
 
-from django.utils.text import slugify
-from django.urls import reverse_lazy
 from django.core.exceptions import ValidationError
-from django.forms import (
-    ModelForm, Form, ModelChoiceField, HiddenInput, Textarea,
-    BooleanField, CharField,
-)
+from django.forms import (BooleanField, CharField, Form, HiddenInput,
+                          ModelChoiceField, ModelForm, Textarea)
+from django.urls import reverse_lazy
+from django.utils.text import slugify
 
-from apps.uploads.fields import UploadField
-from apps.uploads.models import UploadFile
 from apps.mutations.fields import GeneticInputField
 from apps.mutations.models import Mutation
+from apps.uploads.fields import UploadField
+from apps.uploads.models import UploadFile
 
-from .models import PredictDataset, PredictStrain, PredictPipeline
+from .models import PredictDataset, PredictPipeline, PredictStrain
 
 FASTQ_FILES = ['.fastq', '.fastq.gz']
 VCF_FILES = ['.vcf', '.vcf.gz']

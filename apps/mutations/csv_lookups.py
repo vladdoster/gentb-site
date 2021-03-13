@@ -23,9 +23,9 @@ used to look data up.
 Features data conversion, sub table support and column naming.
 """
 import logging
-
 from collections import OrderedDict
 from csv import reader as CsvReader
+
 
 class BaseLookup(dict):
     """

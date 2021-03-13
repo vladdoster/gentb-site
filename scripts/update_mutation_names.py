@@ -10,7 +10,7 @@ sys.path.insert(0, '.')
 sys.path.insert(0, '..')
 
 try:
-    import manage # pylint: disable=unused-import
+    import manage  # pylint: disable=unused-import
 except ImportError as err:
     sys.stderr.write("Could not run script! Is manage.py not in the current"\
         "working directory, or is the environment not configured?:\n"\
@@ -18,7 +18,9 @@ except ImportError as err:
     sys.exit(1)
 
 from argparse import ArgumentParser
+
 from apps.mutations.models import Mutation
+
 
 class Command():
     """Check all mutation names and format the data as needed."""

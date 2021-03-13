@@ -2,7 +2,9 @@
 from __future__ import unicode_literals
 
 from collections import defaultdict
-from django.db import models, migrations
+
+from django.db import migrations, models
+
 
 def to_drug_mutations(apps, schema_editor):
     """Move the drug<->mutation relationship to a ManyToMany field and remove duplicate mutations"""

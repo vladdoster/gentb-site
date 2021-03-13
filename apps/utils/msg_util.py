@@ -1,5 +1,7 @@
 from __future__ import print_function
+
 import sys
+
 
 def msg(m): print(m)
 def dashes(): msg('-' * 40)

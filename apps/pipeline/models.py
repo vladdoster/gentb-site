@@ -33,26 +33,22 @@ to produce a mirror record of a piepline being run:
 Testing is done by including PipelineFiles as testing files.
 """
 
-import re
-import os
-from datetime import timedelta
-import random
-
 import logging
+import os
+import random
+import re
+from datetime import timedelta
 
-from django.db.models import (
-    Model, Q, PositiveIntegerField, IntegerField, FileField, SlugField, DateTimeField,
-    BooleanField, CharField, ForeignKey, TextField, ManyToManyField,
-    CASCADE, SET_NULL
-)
-from model_utils.models import TimeStampedModel
-
-from chore import get_job_manager, tripplet, JobSubmissionError
-
-from django.urls import reverse
+from chore import JobSubmissionError, get_job_manager, tripplet
 from django.conf import settings
-from django.utils.timezone import now
+from django.db.models import (CASCADE, SET_NULL, BooleanField, CharField,
+                              DateTimeField, FileField, ForeignKey,
+                              IntegerField, ManyToManyField, Model,
+                              PositiveIntegerField, Q, SlugField, TextField)
+from django.urls import reverse
 from django.utils.text import slugify
+from django.utils.timezone import now
+from model_utils.models import TimeStampedModel
 
 from .utils import file_as_inputs
 

@@ -24,16 +24,17 @@ Allow uploads to be 'chunked' and saved in descrete chunks.
 
 from hashlib import md5
 
-from django.core.exceptions import PermissionDenied
-from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
-from django.views.generic.detail import View, SingleObjectMixin
-from django.views.generic import RedirectView, FormView
+from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse, JsonResponse
+from django.utils.decorators import method_decorator
+from django.views.generic import FormView, RedirectView
+from django.views.generic.detail import SingleObjectMixin, View
 
 from .files import ResumableFile
-from .models import UploadFile, ResumableUploadFile
+from .models import ResumableUploadFile, UploadFile
 from .utils import Download
+
 
 class RetryUpload(SingleObjectMixin, RedirectView):
     model = UploadFile
@@ -156,6 +157,8 @@ class ManualUploadView(View):
 
 
 from .forms import TestUploadForm
+
+
 class TestUpload(FormView):
     form_class = TestUploadForm
     template_name = 'uploads/test_form.html'

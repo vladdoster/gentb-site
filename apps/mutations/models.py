@@ -23,16 +23,19 @@ Drug resistance and strain source for gene mutations django app.
 import os
 
 from django.conf import settings
-from django.db.models import Model, Manager, Q, QuerySet, \
-    CharField, PositiveIntegerField, ForeignKey, ManyToManyField, URLField, \
-    SlugField, IntegerField, BooleanField, DateField, DateTimeField, \
-    TextField, DecimalField, CASCADE, SET_NULL
+from django.db.models import (CASCADE, SET_NULL, BooleanField, CharField,
+                              DateField, DateTimeField, DecimalField,
+                              ForeignKey, IntegerField, Manager,
+                              ManyToManyField, Model, PositiveIntegerField, Q,
+                              QuerySet, SlugField, TextField, URLField)
 from django.urls import reverse
 
 from apps.maps.models import Country, Place
 from apps.uploads.models import UploadFile
+
+from .utils import match_snp_half, match_snp_name, match_snp_name_raw
 from .validators import is_octal
-from .utils import match_snp_name, match_snp_half, match_snp_name_raw
+
 
 class DrugClassManager(Manager):
     """Allow exporting of drug classes with natural keys"""

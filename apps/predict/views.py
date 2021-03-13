@@ -7,19 +7,19 @@ import logging
 
 LOGGER = logging.getLogger(__name__)
 
-from django.views.generic import (
-    DetailView, ListView, CreateView, TemplateView)
-from django.views.generic.detail import SingleObjectMixin
-from django.urls import reverse
-from django.http.response import JsonResponse
 from django.http import Http404
+from django.http.response import JsonResponse
+from django.urls import reverse
+from django.views.generic import CreateView, DetailView, ListView, TemplateView
+from django.views.generic.detail import SingleObjectMixin
 
 from apps.maps.mixins import JsonView
 from apps.mutations.models import GeneLocus
 
-from .models import PredictDataset, PredictResult, PredictResultLocus, PredictDatasetNote
-from .mixins import PredictMixin
 from .forms import *
+from .mixins import PredictMixin
+from .models import (PredictDataset, PredictDatasetNote, PredictResult,
+                     PredictResultLocus)
 
 
 class Datasets(PredictMixin, ListView):

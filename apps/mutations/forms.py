@@ -21,16 +21,16 @@ Drop mutation for pasting in mutation information quickly.
 import os
 
 from django.conf import settings
-from django.db.models import Q
 from django.contrib.admin.widgets import FilteredSelectMultiple
-from django.forms import (
-    Form, ModelForm, CharField, Textarea, ModelMultipleChoiceField, ValidationError
-)
+from django.db.models import Q
+from django.forms import (CharField, Form, ModelForm, ModelMultipleChoiceField,
+                          Textarea, ValidationError)
 
 from apps.uploads.fields import UploadField
 
-from .models import Drug, GeneLocus, Mutation, ImportSource, ImportStrain
+from .models import Drug, GeneLocus, ImportSource, ImportStrain, Mutation
 from .utils import unpack_mutation_format
+
 
 class DrugForm(ModelForm):
     """Select drugs and mutations from a drop down"""

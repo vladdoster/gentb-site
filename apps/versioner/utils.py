@@ -17,6 +17,7 @@
 
 from django.template.context import Context
 
+
 def to(t=list):
     """Create an object from a generator function, default is list"""
     def _outer(f):

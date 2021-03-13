@@ -18,17 +18,16 @@
 Mixins specially for the maps app
 """
 
-from operator import or_, and_
 from datetime import timedelta
 from functools import reduce
+from operator import and_, or_
 
 from django.core.serializers.json import DjangoJSONEncoder
-from django.db.models import Q, QuerySet, Model
+from django.db.models import Model, Q, QuerySet
+from django.http import JsonResponse
 from django.template.response import SimpleTemplateResponse
 from django.views.decorators.cache import cache_page
 from django.views.generic import View
-
-from django.http import JsonResponse
 
 from .utils import Jdict
 

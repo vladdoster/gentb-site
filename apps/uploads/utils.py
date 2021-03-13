@@ -18,20 +18,19 @@
 Allows the downloading of URLs from different schemes using python-requests.
 """
 
-import os
-from os.path import join, getsize
-import uuid
 import json
+import os
+import uuid
 from hashlib import md5
-
-from requests import Session
-from requests.compat import urlparse, urlunparse
-
-from requests_file import FileAdapter
-from requests_ftp import FTPAdapter
+from os.path import getsize, join
 
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
+from requests import Session
+from requests.compat import urlparse, urlunparse
+from requests_file import FileAdapter
+from requests_ftp import FTPAdapter
+
 
 def get_uuid():
     """Return the hex from a new uuid4 uuid"""

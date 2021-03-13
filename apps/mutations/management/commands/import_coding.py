@@ -3,11 +3,11 @@ Impor coding and non-coding tab files into the database
 """
 import logging
 
-from django.db import transaction
 from django.core.management.base import BaseCommand
-
+from django.db import transaction
 from fav.gene_lookup import GeneLookup
-from apps.mutations.models import Genome, GeneLocus
+
+from apps.mutations.models import GeneLocus, Genome
 
 LOGGER = logging.getLogger('apps.mutations')
 

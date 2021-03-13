@@ -2,20 +2,21 @@
 Serialise very large data tables for import.
 """
 
+import atexit
+import json
 import os
 import sys
-import json
-import atexit
-
 from collections import defaultdict
 
-from django.db import models, transaction
-from django.core.serializers import base, get_serializer_formats, register_serializer
-from django.core.serializers.python import _get_model
-from django.core.serializers.json import Serializer as BaseSerializer
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.serializers import (base, get_serializer_formats,
+                                     register_serializer)
+from django.core.serializers.json import Serializer as BaseSerializer
+from django.core.serializers.python import _get_model
+from django.db import models, transaction
 
 from .utils import sizeof, to
+
 
 class Serializer(BaseSerializer):
     pass

@@ -2,13 +2,13 @@
 Manage pipeline jobs, re-submit or submit as needed
 """
 import sys
-
 from datetime import datetime
-from django.core.management.base import BaseCommand
 
 from chore import JobSubmissionError
+from django.core.management.base import BaseCommand
 
 from apps.pipeline.models import PipelineRun, ProgramRun
+
 
 def log(msg, *args, **kwargs):
     """Write consistantly to output"""

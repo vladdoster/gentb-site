@@ -22,8 +22,8 @@ from collections import defaultdict
 
 from django.forms.fields import Field
 
-from .widgets import UploadChooserWidget, UploadTableWidget
 from .models import UPLOADERS
+from .widgets import UploadChooserWidget, UploadTableWidget
 
 
 class UploadField(Field):

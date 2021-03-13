@@ -3,11 +3,10 @@ Provide a place for city and country geo data for showing on maps.
 """
 import os
 
-from django.db.models import (
-    Model, OneToOneField, ForeignKey, IntegerField, FloatField, CharField, CASCADE,
-)
+from django.db.models import (CASCADE, CharField, FloatField, ForeignKey,
+                              IntegerField, Model, OneToOneField)
 
-from .gis import GeoManager, MultiPolygonField, MultiPointField
+from .gis import GeoManager, MultiPointField, MultiPolygonField
 
 # This is where we are currently looking for data, but it could change.
 URL_PREFIX = 'http://www.naturalearthdata.com/'\

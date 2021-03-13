@@ -2,19 +2,18 @@
 Load the country and city data
 """
 
-import sys
 import os
-
-from zipfile import ZipFile, BadZipFile
+import sys
+from zipfile import BadZipFile, ZipFile
 
 import requests
-
 from django.conf import settings
-from django.core.management.base import BaseCommand
 from django.contrib.gis.utils import LayerMapping
+from django.core.management.base import BaseCommand
 
 from apps.maps.models import Country, CountryDetail, Place
 from apps.mutations.utils import StatusBar
+
 
 class FilteredMapping(LayerMapping):
     def feature_kwargs(self, feat):

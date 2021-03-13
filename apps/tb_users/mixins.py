@@ -23,6 +23,7 @@
 from django.contrib.auth.views import redirect_to_login
 from django.core.exceptions import PermissionDenied
 
+
 class ProtectedMixin():
     """Combine login required and permission specific as one mixin"""
     def is_permitted(self, user):

@@ -3,8 +3,8 @@ Provide processing for pipeline views
 """
 import re
 
-from django.utils.safestring import mark_safe
 from django.template import Library
+from django.utils.safestring import mark_safe
 
 register = Library() # pylint: disable=invalid-name
 

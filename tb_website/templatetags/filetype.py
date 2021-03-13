@@ -3,6 +3,7 @@ File type tools
 """
 
 from collections import OrderedDict
+
 from django.template import Library
 
 register = Library() # pylint: disable=invalid-name
