@@ -25,7 +25,6 @@ back to stdout for pipeline processing.
 
 import os
 import sys
-import atexit
 
 
 def test_quality(name, fhl, threshold=15):

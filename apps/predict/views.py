@@ -8,9 +8,7 @@ import logging
 LOGGER = logging.getLogger(__name__)
 
 from django.views.generic import (
-    DetailView, ListView, CreateView, UpdateView, FormView,
-    TemplateView,
-)
+    DetailView, ListView, CreateView, TemplateView)
 from django.views.generic.detail import SingleObjectMixin
 from django.urls import reverse
 from django.http.response import JsonResponse

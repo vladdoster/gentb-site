@@ -26,15 +26,14 @@ from collections import defaultdict, OrderedDict
 from django.views.generic import TemplateView, ListView
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
-from django.db.models import Count, Q
+from django.db.models import Count
 
 from apps.mutations.models import (
-    ImportSource, StrainSource, StrainMutation, GeneLocus, Genome, StrainResistance,
-    Mutation, Paper, BioProject, Lineage, RESISTANCE, RESISTANCE_GROUP,
-)
+    ImportSource, StrainSource, StrainMutation, GeneLocus, StrainResistance,
+    Mutation, Paper, BioProject, RESISTANCE, RESISTANCE_GROUP)
 
 from .mixins import JsonView, DataSlicerMixin, DataTableMixin
-from .utils import GraphData, many_lookup, adjust_coords
+from .utils import GraphData, many_lookup
 from .models import Country, CountryHealth, CountryDetail
 
 def get_gdp(self, **_):

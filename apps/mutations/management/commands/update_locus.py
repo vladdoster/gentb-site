@@ -6,9 +6,7 @@ Gene Locus database.
 import logging
 from collections import OrderedDict
 
-from django.core.management.base import BaseCommand, CommandError
-
-from apps.mutations.models import GeneLocus
+from django.core.management.base import BaseCommand
 
 LOGGER = logging.getLogger('apps.mutations')
 

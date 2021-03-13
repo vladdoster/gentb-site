@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # Copyright 2014, Thomas R. Ioerger ..
-import sys,os,re
+import sys,re
 
 def octal(s): # converts to binary
   o = ''
